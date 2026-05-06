@@ -2,7 +2,9 @@ version: '3.6'
 
 services:
   backend:
-    build: backend
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile-backend
     hostname: backend-host
     volumes:
       - ./backend:/app
@@ -10,8 +12,11 @@ services:
       - "8000:8000"
     networks:
       - ares-network
+      
   frontend:
-    build: frontend
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile-frontend
     hostname: frontend-host
     volumes:
       - ./frontend:/app
